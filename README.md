@@ -1,6 +1,28 @@
-# Laravel Echo Server
+# Laravel Echo Server (With whisper subscribe)
 
 NodeJs server for Laravel Echo broadcasting with Socket.io.
+
+### Edited:
+
+I added the `PresenceChannelWhisper` just to listen to all whispers broadcast client events. This hasn't been implemented so I decided to fork this project for my own.
+
+Optionally, you can configure laravel-echo-server to publish an event on each update to a presence channel, by setting `databaseConfig.publishWhisper` to `true`:
+
+```json
+{
+  "database": "redis",
+  "databaseConfig": {
+    "redis" : {
+      "port": "6379",
+      "host": "localhost"
+    },
+    "publishWhisper": true
+  }
+}
+```
+
+## Important:
+Using this modified version of laravel echo requires you to at least have read the documentation below. 
 
 ## System Requirements
 
@@ -334,3 +356,9 @@ _Note: When using the socket.io client library from your running server, remembe
 #### µWebSockets deprecation
 
 µWebSockets has been [officially deprecated](https://www.npmjs.com/package/uws). Currently there is no support for µWebSockets in Socket.IO, but it may have the new [ClusterWS](https://www.npmjs.com/package/@clusterws/cws) support incoming. Meanwhile Laravel Echo Server will use [`ws` engine](https://www.npmjs.com/package/ws) by default until there is another option.
+
+## Special Thanks
+
+This package based on timmy1420's Repository
+- [Laravel Echo Server - github.com/timmy1420](https://github.com/timmy1420/laravel-echo-server)
+- [Echo: how to emit a Laravel event through the WebSocket? - Laracasts](https://laracasts.com/discuss/channels/general-discussion/echo-how-to-emit-a-laravel-event-through-the-websocket)
